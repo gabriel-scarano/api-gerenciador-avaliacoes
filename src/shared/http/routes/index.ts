@@ -5,3 +5,5 @@ const routes = Router();
 routes.get('/', (req: Request, res: Response) => {
     res.status(200).send({ mensagem: 'Olá mundo' });
 });
+
+export default routes;
