@@ -7,12 +7,14 @@
   "scripts": {
     "dev": "npx ts-node-dev src/shared/http/index.ts",
     "build": "npx tsc",
-    "start": "node dist/shared/http/index.js"
+    "start": "node dist/shared/http/index.js",
+    "migrate": "npx prisma migrate dev --name"
   },
   "devDependencies": {
     "@types/cors": "^2.8.14",
     "@types/express": "^4.17.19",
     "@types/node": "^20.8.5",
+    "prisma": "^5.4.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.2.2"
   },
