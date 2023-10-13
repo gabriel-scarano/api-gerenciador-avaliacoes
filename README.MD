@@ -10,7 +10,7 @@ O gerenciador de pacotes utilizado foi o Yarn, clone o repositório e execute o 
 yarn
 ```
 
-Caso não tiver o Yarn instalador, basta instalar globalmente na sua máquina utilizando o comando:
+Caso não tiver o Yarn instalado, basta instalar globalmente na sua máquina utilizando o comando:
 
 ```
 npm install yarn -g
