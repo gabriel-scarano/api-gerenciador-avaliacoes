@@ -7,13 +7,13 @@ API para o meu futuro app e site que tem o propósito de gerenciar as notas das 
 O gerenciador de pacotes utilizado foi o Yarn, clone o repositório e execute o seguinte comando para instalar as dependências do projeto:
 
 ```
-    yarn
+yarn
 ```
 
 Caso não tiver o Yarn instalador, basta instalar globalmente na sua máquina utilizando o comando:
 
 ```
-    npm install yarn -g
+npm install yarn -g
 ```
 
 ## 1.1 Tecnologias Utilizadas
