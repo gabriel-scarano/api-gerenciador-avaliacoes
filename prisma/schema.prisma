@@ -9,3 +9,60 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Usuario {
+  id              String       @id @default(uuid())
+  email           String       @unique
+  senha           String
+  nome            String       @db.VarChar(60)
+  data_nascimento DateTime     @db.Date
+  genero          String?      @db.VarChar(30)
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  Periodo         Periodo[]
+  Disciplina      Disciplina[]
+  Avaliacao       Avaliacao[]
+
+  @@map("usuarios")
+}
+
+model Periodo {
+  id         String       @id @default(uuid())
+  id_usuario String
+  usuario    Usuario      @relation(fields: [id_usuario], references: [id])
+  nome       String       @db.VarChar(40)
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  Disciplina Disciplina[]
+
+  @@map("periodos")
+}
+
+model Disciplina {
+  id         String      @id @default(uuid())
+  id_usuario String
+  usuario    Usuario     @relation(fields: [id_usuario], references: [id])
+  id_periodo String
+  periodo    Periodo     @relation(fields: [id_periodo], references: [id])
+  nome       String      @db.VarChar(40)
+  cor        String      @db.Char(6)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  Avaliacao  Avaliacao[]
+
+  @@map("disciplinas")
+}
+
+model Avaliacao {
+  id            String     @id @default(uuid())
+  id_usuario    String
+  usuario       Usuario    @relation(fields: [id_usuario], references: [id])
+  id_disciplina String
+  disciplina    Disciplina @relation(fields: [id_disciplina], references: [id])
+  titulo        String     @db.VarChar(30)
+  peso          Decimal    @default(1) @db.Decimal(11, 4)
+  data          DateTime   @db.Date
+  nota          Decimal?   @db.Decimal(11, 4)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+}
