@@ -1,9 +1,8 @@
+import usuarioRoutes from "@modules/Usuarios/routes/UsuarioRoutes";
 import { Request, Response, Router } from "express";
 
 const routes = Router();
 
-routes.get('/', (req: Request, res: Response) => {
-    res.status(200).send({ mensagem: 'Olá mundo' });
-});
+routes.use('/usuario', usuarioRoutes);
 
 export default routes;
