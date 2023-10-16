@@ -55,6 +55,20 @@ export const getById = async (id: string): Promise<Usuario> => {
     return usuario;
 };
 
+export const getByEmail = async (email: string): Promise<Usuario> => {
+    const usuario = await prisma.usuario.findFirst({
+        where: {
+            email,
+        },
+    });
+
+    if (!usuario) {
+        throw new AppError('Usuário não encontrado.', 404);
+    }
+
+    return usuario;
+};
+
 export const deleteById = async (id: string): Promise<boolean> => {
     const usuario = await prisma.usuario.findFirst({
         where: {

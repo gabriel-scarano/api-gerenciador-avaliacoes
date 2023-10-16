@@ -2,6 +2,13 @@ import { Request, Response } from 'express';
 import * as service from '../services/UsuarioService';
 
 export default class UsuarioController {
+    public async login(req: Request, res: Response): Promise<Response> {
+        const { email, senha } = req.body;
+
+        const result = await service.login(email, senha);
+        return res.status(200).send(result);
+    }
+
     public async create(req: Request, res: Response): Promise<Response> {
         const payload = req.body;
 
